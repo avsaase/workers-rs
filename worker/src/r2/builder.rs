@@ -345,6 +345,9 @@ pub struct ListOptionsBuilder<'bucket> {
     pub(crate) include: Option<Vec<Include>>,
 }
 
+unsafe impl Send for ListOptionsBuilder<'_> {}
+unsafe impl Sync for ListOptionsBuilder<'_> {}
+
 impl<'bucket> ListOptionsBuilder<'bucket> {
     /// The number of results to return. Defaults to 1000, with a maximum of 1000.
     pub fn limit(mut self, limit: u32) -> Self {

@@ -27,6 +27,7 @@ checksum = "1236b4b292f6c4d6dc34604bb5120d85c3fe1d1aa596bd5cc52ca054d13e7b9e"
 dependencies = [
  "async-trait",
  "axum-core",
+ "axum-macros",
  "bytes",
  "futures-util",
  "http",
@@ -67,10 +68,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "axum-macros"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "00c055ee2d014ae5981ce1016374e8213682aa14d9bf40e48ab48b5f3ef20eaa"
+dependencies = [
+ "heck",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "axum-on-workers"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "axum-macros",
  "console_error_panic_hook",
  "tower-service",
  "wasm-bindgen-futures",
@@ -214,6 +228,12 @@ dependencies = [
  "pin-utils",
  "slab",
 ]
+
+[[package]]
+name = "heck"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
 
 [[package]]
 name = "http"
@@ -819,7 +839,7 @@ checksum = "1a515f5799fe4961cb532f983ce2b23082366b898e52ffbce459c86f67c8378a"
 
 [[package]]
 name = "worker"
-version = "0.0.20"
+version = "0.0.21"
 dependencies = [
  "async-trait",
  "axum",
@@ -865,7 +885,7 @@ dependencies = [
 
 [[package]]
 name = "worker-macros"
-version = "0.0.12"
+version = "0.0.13"
 dependencies = [
  "async-trait",
  "proc-macro2",
@@ -879,7 +899,7 @@ dependencies = [
 
 [[package]]
 name = "worker-sys"
-version = "0.0.12"
+version = "0.0.13"
 dependencies = [
  "cfg-if",
  "js-sys",

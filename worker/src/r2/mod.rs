@@ -24,6 +24,9 @@ pub struct Bucket {
     inner: EdgeR2Bucket,
 }
 
+unsafe impl Send for Bucket {}
+unsafe impl Sync for Bucket {}
+
 impl Bucket {
     /// Retrieves the [Object] for the given key containing only object metadata, if the key exists.
     pub async fn head(&self, key: impl Into<String>) -> Result<Option<Object>> {
@@ -164,6 +167,9 @@ impl AsRef<JsValue> for Bucket {
 pub struct Object {
     inner: ObjectInner,
 }
+
+unsafe impl Send for Object {}
+unsafe impl Sync for Object {}
 
 impl Object {
     pub fn key(&self) -> String {
@@ -398,6 +404,9 @@ impl MultipartUpload {
 pub struct Objects {
     inner: EdgeR2Objects,
 }
+
+unsafe impl Send for Objects {}
+unsafe impl Sync for Objects {}
 
 impl Objects {
     /// An [Vec] of [Object] matching the [list](Bucket::list) request.
